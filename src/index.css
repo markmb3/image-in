@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  
+  background-image: url("film.jpg");
+  background-color: #FFF;
+  width: 100%;
+  height: auto;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+button {
+	cursor: pointer;
+}
