@@ -24,7 +24,7 @@ const particlesOptions = {
 }
 
 const initialState = {
-  input: '',
+      input: '',
       imageUrl: '',
       box: {},
       route: 'signin',
@@ -90,6 +90,13 @@ class App extends Component {
     .then(response => response.json())
     .then(response => {
       if (response) {
+        fetch('http://localhost:3001/image', {
+          method: 'put',
+          headers: {'content-type': 'application/json'},
+          body: JSON.stringify({
+          id: this.state.id
+        })
+      })
         .then(response => response.json())
         .then(count => {
           this.setState(Object.assign(this.state.user, { entries: count }))
@@ -119,7 +126,7 @@ class App extends Component {
               params={particlesOptions}
             />
         <Navmenu isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
-        { this.state.route === 'home' ?
+        { route === 'home' ?
           
         <div>
         <Logo/>
@@ -128,7 +135,7 @@ class App extends Component {
         onButtonSubmit={this.onButtonSubmit}
         />
         <Rank
-          name={this .state.user.name}
+          name={this.state.user.name}
           entries={this.state.user.entries}
         />
         <FaceRecognition box={box} imageUrl={imageUrl} />
